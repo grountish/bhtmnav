@@ -21,7 +21,7 @@ export default {
 }
 </script>
 <style>
-.skip{
+.skip {
     left:50%;
     border: 1px solid black;
 }
