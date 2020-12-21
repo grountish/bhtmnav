@@ -47,7 +47,7 @@ export default {
         case 'dark':
           return (this.$colorMode.preference = 'light')
         case 'system':
-          return (this.$colorMode.preference = this.$colorMode.value === 'dark' ? 'light' : 'dark')
+          return (this.$colorMode.preference = this.$colorMode.value === 'light' ? 'light' : 'light')
 
         default:
           return (this.$colorMode.preference = COLOR_MODE_FALLBACK)
