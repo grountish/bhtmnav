@@ -35,4 +35,7 @@ export default {
     }
   }
 }
+nav {
+  z-index: 3;
+}
 </style>
