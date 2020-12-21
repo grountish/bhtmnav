@@ -1,5 +1,5 @@
 <template>
-  <nav class="">
+  <nav v-if="showNav" class="">
     <ul class="flex fixed top-0 inset-x-0 p-3">
       <li class="flex-1 mr-2">
         <nuxt-link class="btn block" to="/">Home</nuxt-link>
@@ -16,7 +16,17 @@
 
 <script>
 export default {
-  name: 'Header'
+  name: 'Header',
+  data(){
+    return{
+      showNav:false
+    }
+  },
+  mounted() {
+    window.addEventListener('mousemove', (e)=>{
+       e.y < 55 ? this.showNav = true : this.showNav = false
+    })
+  }
 }
 </script>
 
