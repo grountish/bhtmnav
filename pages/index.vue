@@ -1,22 +1,13 @@
 <template>
   <div class="main text-center flex flex-col items-center justify-center">
-    <!-- <logo /> -->
-    <h1 class="title">Nuxt — Tailwind — Netlify CMS</h1>
-    <h2 class="subtitle">Boilerplate</h2>
+    <img src="~/assets/BTMlogo.png" alt="">
+    <p>This is an interactive experience about the lives and needs of healthcare workers from around the world. 
+This experience contains sound. Use keyboard and Mouse to navigate.</p>
+    <nuxt-link to="/intro">Start your journey</nuxt-link>
   </div>
 </template>
 
 <script>
-// import Logo from '~/components/Logo.vue'
-
 export default {
-  // components: {
-  //   Logo
-  // },
-  head() {
-    return {
-      script: [{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }]
-    }
-  }
 }
 </script>
