@@ -8,6 +8,7 @@
       loop
       playsinline
     />
+    <nuxt-link v-if="nextChapter" class="skip fixed top-3/4 text-2x1 p-4 border border-black" to="/countries/zimbawe/chaptertwo">Go to next chapter</nuxt-link>
   </div>
 </template>
 
@@ -18,6 +19,7 @@ export default {
     vid2: 'https://res.cloudinary.com/grountish/video/upload/v1607989129/acd_wj1h23.mp4',
     duration: '',
     video: 1,
+    nextChapter: false,
   }),
   mounted() {
     window.addEventListener('scroll', this.handleScroll)
@@ -38,9 +40,20 @@ export default {
           this.vid =
             'https://res.cloudinary.com/grountish/video/upload/v1607990207/final_5fd7fb2506299100a1f0974f_204210_pb9tyt.mp4'
           window.scrollTo(0, 0)
+          this.video = 3
+        }
+        if (this.video === 3 && event.target.scrollingElement.scrollTop > 4400) {
+          this.nextChapter = true
         }
       })
     },
   },
 }
 </script>
+<style>
+.skip {
+    left:50%;
+    border: 1px solid black;
+    top:80%;
+}
+</style>
