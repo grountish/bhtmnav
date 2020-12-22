@@ -1,24 +1,24 @@
 <template>
   <div>
-    <div class="stepNav fixed  flex flex-col">
+    <div class="stepNav fixed flex flex-col">
       <div @click="handleStep(0)">
-        <img v-if="video === 0" src="~/assets/black.svg" alt="">
-        <img v-else src="~/assets/white.svg" alt="">
+        <img v-if="video === 0" src="~/assets/black.svg" alt="" />
+        <img v-else src="~/assets/white.svg" alt="" />
       </div>
       <img src="~/assets/dots.svg" alt="" />
       <div @click="handleStep(1)">
-        <img v-if="video === 1" src="~/assets/black.svg" alt="">
-        <img v-else src="~/assets/white.svg" alt="">
+        <img v-if="video === 1" src="~/assets/black.svg" alt="" />
+        <img v-else src="~/assets/white.svg" alt="" />
       </div>
       <img src="~/assets/dots.svg" alt="" />
       <div @click="handleStep(2)">
-        <img v-if="video === 2" src="~/assets/black.svg" alt="">
-        <img v-else src="~/assets/white.svg" alt="">
+        <img v-if="video === 2" src="~/assets/black.svg" alt="" />
+        <img v-else src="~/assets/white.svg" alt="" />
       </div>
       <img src="~/assets/dots.svg" alt="" />
       <div @click="handleStep(3)">
-        <img v-if="video === 3" src="~/assets/black.svg" alt="">
-        <img v-else src="~/assets/white.svg" alt="">
+        <img v-if="video === 3" src="~/assets/black.svg" alt="" />
+        <img v-else src="~/assets/white.svg" alt="" />
       </div>
     </div>
     <div ref="input" class="overflow-hidden bg-black cont" :style="{ height: duration }"></div>
@@ -37,7 +37,7 @@
       <nuxt-link
         v-if="nextChapter"
         class="skip fixed top-3/4 text-2x1 p-4 border border-black"
-        to="/countries/zimbawe/chaptertwo"
+        to="/countries/zimbabwe/chaptertwo"
         >Go to next chapter</nuxt-link
       >
     </div>
@@ -49,10 +49,11 @@ export default {
   data: () => ({
     vid: 'https://www.html5rocks.com/tutorials/video/basics/Chrome_ImF.webm',
     vid2: 'https://res.cloudinary.com/grountish/video/upload/v1607989129/acd_wj1h23.mp4',
-    vid3: 'https://res.cloudinary.com/grountish/video/upload/v1607990207/final_5fd7fb2506299100a1f0974f_204210_pb9tyt.mp4',
+    vid3:
+      'https://res.cloudinary.com/grountish/video/upload/v1607990207/final_5fd7fb2506299100a1f0974f_204210_pb9tyt.mp4',
     vid4: 'https://www.html5rocks.com/tutorials/video/basics/Chrome_ImF.webm',
     duration: '',
-    vidToShow:'https://www.html5rocks.com/tutorials/video/basics/Chrome_ImF.webm',
+    vidToShow: 'https://www.html5rocks.com/tutorials/video/basics/Chrome_ImF.webm',
     video: 0,
     nextChapter: false,
     showVid: true,
@@ -88,12 +89,12 @@ export default {
         }
       })
     },
-    handleStep(step){
-      let videos = [this.vid,this.vid2,this.vid3,this.vid4]
+    handleStep(step) {
+      let videos = [this.vid, this.vid2, this.vid3, this.vid4]
       this.video = step
       this.vidToShow = videos[step]
-       window.scrollTo(0, 0)
-    }
+      window.scrollTo(0, 0)
+    },
   },
 }
 </script>

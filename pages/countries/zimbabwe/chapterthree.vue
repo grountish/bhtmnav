@@ -8,7 +8,12 @@
       loop
       playsinline
     />
-    <nuxt-link v-if="nextChapter" class="skip fixed top-3/4 text-2x1 p-4 border border-black" to="/countries/zimbawe/chaptertwo">Go to next chapter</nuxt-link>
+    <nuxt-link
+      v-if="nextChapter"
+      class="skip fixed top-3/4 text-2x1 p-4 border border-black"
+      to="/countries/zimbabwe/chaptertwo"
+      >Go to next chapter</nuxt-link
+    >
   </div>
 </template>
 
@@ -52,8 +57,8 @@ export default {
 </script>
 <style>
 .skip {
-    left:50%;
-    border: 1px solid black;
-    top:80%;
+  left: 50%;
+  border: 1px solid black;
+  top: 80%;
 }
 </style>
