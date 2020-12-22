@@ -5,10 +5,10 @@
         <nuxt-link class="" to="/"><img src="~/assets/BTMLogoBlack.svg" alt=""></nuxt-link>
       </li>
       <div v-if="showChapNav" class="bg-pink-100 rounded-2xl flex flex-row mx-5 flex-1 justify-around">
-        <button v-if="chapter !== 1" @click="navChapter(-1)"><img src="~/assets/l-arrow.svg" alt=""></button>
+        <button v-show="chapter !== 1" @click="navChapter(-1)"><img src="~/assets/l-arrow.svg" alt=""></button>
         <img src="~/assets/chapter-navigation-icon.svg" alt="">
         <h1 class="text-red-600 text-bold my-auto text-xl">CHAPTER NAME</h1>
-        <button v-if="chapter !== 3" @click="navChapter(+1)"><img src="~/assets/r-arrow.svg" alt=""></button>
+        <button v-show="chapter !== 3" @click="navChapter(+1)"><img src="~/assets/r-arrow.svg" alt=""></button>
       </div>
       <li class="flex-1 ml-auto">
         <img :src="imgSound" class="sound ml-auto" alt="" @click="switchSound">
