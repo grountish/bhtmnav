@@ -9,7 +9,7 @@
       playsinline
       autoplay
     />
-    <nuxt-link class="skip fixed top-3/4 text-2x1 p-4 border border-black" to="/countries"><h1>skip intro</h1></nuxt-link>
+    <nuxt-link class="skip fixed top-3/4 text-2x1 text-red-500 p-6 border border-black bg-white-100" to="/countries"><h1>skip intro</h1></nuxt-link>
   </div>
 </template>
 <script>
@@ -22,7 +22,7 @@ export default {
 </script>
 <style>
 .skip {
-    left:50%;
+    left:46%;
     border: 1px solid black;
     top:80%;
 }

@@ -10,6 +10,7 @@ module.exports = {
   theme: {
     darkSelector: '.dark-mode',
     extend: {
+      visibility: ['hover', 'focus'],
       fontFamily: {
         sans: ['Karla', ...defaultTheme.fontFamily.sans],
         mono: [...defaultTheme.fontFamily.mono]
