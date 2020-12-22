@@ -1,5 +1,5 @@
 <template>
-  <div class="conte">
+  <div :class="[video === 3 ? 'curs' : '', 'conte']" @click="goNextChapt">
     <div class="stepNav fixed flex flex-col justify-center">
       <div @click="handleStep(0)">
         <img v-if="video === 0" src="~/assets/step-nav-arrows.svg" alt="" />
@@ -21,7 +21,8 @@
         <img v-else src="~/assets/white.svg" alt="" />
       </div>
     </div>
-    <img :src="stepImageSource" alt="">
+    <img :src="stepImageSource" class="stepImg" alt="st" />
+    <img v-if="video === 3" src="~/assets/Cursor.svg" :style="{ transform: direc }" class="absolute cursor" alt="a" />
   </div>
 </template>
 
@@ -29,7 +30,7 @@
 import a1 from '~/assets/a1.jpg'
 import a2 from '~/assets/a2.jpg'
 import a3 from '~/assets/a3.jpg'
-
+import a4 from '~/assets/a4.jpg'
 export default {
   data: () => ({
     duration: '',
@@ -37,21 +38,45 @@ export default {
     nextChapter: false,
     showVid: true,
     stepImageSource: a1,
+    myCursor: 'normal',
+    x: 1,
+    y: 1,
+    direc: '',
   }),
   mounted() {
     window.addEventListener('scroll', this.handleScroll)
+
+    window.addEventListener('mousemove', (e) => {
+      this.x = e.x - 800
+      this.y = e.y - 400
+      this.direc = `translate(${this.x}px, ${this.y}px)`
+    })
   },
   methods: {
     handleScroll(event) {
       let sc = event.target.scrollingElement.scrollTop
-      if(sc < 20){ this.stepImageSource = a1;this.video = 0 }
-     else if(sc < 40 && sc > 20){ this.stepImageSource = a2; this.video = 1}
-     else if(sc > 40){ this.stepImageSource = a3; this.video = 2 }
+      if (sc < 20) {
+        this.stepImageSource = a1
+        this.video = 0
+      } else if (sc < 40 && sc > 20) {
+        this.stepImageSource = a2
+        this.video = 1
+      } else if (sc < 60 && sc > 40) {
+        this.stepImageSource = a3
+        this.video = 2
+      } else if (sc > 60) {
+        this.stepImageSource = a4
+        this.video = 3
+      }
+    },
+    goNextChapt(){
+      console.log("object");
+      this.$router.push('/countries/zimbabwe/chaptertwo')
     },
     handleStep(step) {
-      
+      let videos = [a1, a2, a3, a4]
       this.video = step
-      this.vidToShow = videos[step]
+      this.stepImageSource = videos[step]
       window.scrollTo(0, 0)
     },
   },
@@ -75,12 +100,24 @@ video {
   right: 7%;
   top: 40%;
 }
+.cursor {
+  position: absolute;
+  width: 400px;
+  top: 50%;
+  left: 50%;
 
-.stepNav img {
-margin: auto;
 }
 
-.conte{
+.curs {
+  cursor: none;
+}
+
+
+.stepNav img {
+  margin: auto;
+}
+
+.conte {
   height: 110vh;
   width: 100vw;
 }

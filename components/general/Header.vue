@@ -5,7 +5,7 @@
         <nuxt-link class="" to="/"><img src="~/assets/BTMLogoBlack.svg" alt="" /></nuxt-link>
       </li>
       <li class="flex-1 ml-auto">
-        <img :src="imgSound" class="sound ml-auto" alt="" @click="switchSound" />
+        <img :src="imgSound"  class="sound ml-auto" alt="" @click="switchSound" />
       </li>
     </ul>
   </nav>
@@ -14,6 +14,7 @@
 <script>
 import soundImg from '~/assets/sound.svg'
 import noSound from '~/assets/no-sound.svg'
+
 export default {
   name: 'Header',
   data() {
