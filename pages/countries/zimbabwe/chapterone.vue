@@ -38,6 +38,8 @@ import a1 from '~/assets/a1.jpg'
 import a2 from '~/assets/a2.jpg'
 import a3 from '~/assets/a3.jpg'
 import a4 from '~/assets/a4.jpg'
+import mobilePhoto from '~/assets/mobile-photo.jpg'
+
 export default {
   data: () => ({
     duration: '',
@@ -50,7 +52,13 @@ export default {
     y: 1,
     direc: '',
   }),
+
   mounted() {
+
+    if (window.matchMedia("(max-width: 800px)").matches) {
+      this.stepImageSource = mobilePhoto
+    }
+
     window.addEventListener('scroll', this.handleScroll)
 
     window.addEventListener('mousemove', (e) => {
@@ -58,6 +66,7 @@ export default {
       this.y = e.y - 400
       this.direc = `translate(${this.x}px, ${this.y}px)`
     })
+
   },
   methods: {
     handleScroll(event) {
