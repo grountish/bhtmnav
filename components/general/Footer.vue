@@ -1,6 +1,6 @@
 <template>
   <nav v-if="showNav" class="">
-    <ul class="flex justify-between fixed bottom-0 inset-x-0 p-6">
+    <ul class="flex justify-between fixed bottom-0 inset-x-0 p-6 my-2">
       <li>
         <button v-show="chapter !== 1" @click="navChapter(-1)"><img src="~/assets/chapter-arrow.svg" alt="" /></button>
       </li>
@@ -24,7 +24,7 @@ export default {
   name: 'Header',
   data() {
     return {
-      showNav: false,
+      showNav: true,
       sound: true,
       imgSound: soundImg,
       showChapNav: false,
@@ -33,15 +33,21 @@ export default {
     }
   },
   mounted() {
-    window.addEventListener('mousemove', (e) => {
-      this.$route.path.indexOf('chapter') === -1 ? (this.showChapNav = false) : (this.showChapNav = true)
-      e.y > 500 ? (this.showNav = true) : (this.showNav = false)
-    })
+    // window.addEventListener('mousemove', (e) => {
+    //   this.$route.path.indexOf('chapter') === -1 ? (this.showChapNav = false) : (this.showChapNav = true)
+    //    e.y > 500 ? this.showChapNav = true : this.showChapNav = false
+    // })
   },
   methods: {
     switchSound() {
       this.sound = !this.sound
       this.sound ? (this.imgSound = soundImg) : (this.imgSound = noSound)
+    },
+    chapterHover() {
+      this.showChapNav = true
+    },
+    chapterUnhover() {
+      this.showChapNav = false
     },
     navChapter(sum) {
       this.chapter = this.chapter + sum
@@ -94,6 +100,9 @@ export default {
 </script>
 
 <style scoped>
+.right-arrow{
+  width: 13px;
+}
 nav {
   z-index: 3;
 }

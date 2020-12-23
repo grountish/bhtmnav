@@ -1,31 +1,28 @@
 <template>
-  <div :class="[video === 3 ? 'curs' : '', 'conte']" @click="goNextChapt">
+  <div :class="[video === 3 ? 'curs' : '', 'conte']" >
     <div class="stepNav fixed flex flex-col justify-center">
       <div @click="handleStep(0)">
         <img v-if="video === 0" src="~/assets/step-nav-arrows.svg" alt="" />
-        <img v-else src="~/assets/white.svg" alt="" />
+        <img v-else src="~/assets/navigation-circle.svg" alt="" />
       </div>
       <img src="~/assets/dots.svg" alt="" />
       <div @click="handleStep(1)">
         <img v-if="video === 1" src="~/assets/step-nav-arrows.svg" alt="" />
-        <img v-else src="~/assets/white.svg" alt="" />
+        <img v-else src="~/assets/navigation-circle.svg" alt="" />
       </div>
       <img src="~/assets/dots.svg" alt="" />
       <div @click="handleStep(2)">
         <img v-if="video === 2" src="~/assets/step-nav-arrows.svg" alt="" />
-        <img v-else src="~/assets/white.svg" alt="" />
+        <img v-else src="~/assets/navigation-circle.svg" alt="" />
       </div>
       <img src="~/assets/dots.svg" alt="" />
       <div @click="handleStep(3)">
         <img v-if="video === 3" src="~/assets/step-nav-arrows.svg" alt="" />
-        <img v-else src="~/assets/white.svg" alt="" />
+        <img v-else src="~/assets/navigation-circle.svg" alt="" />
       </div>
     </div>
     <img :src="stepImageSource" class="stepImg" alt="st" />
-    <nuxt-link class="trasparent border-solid border-white border previous  rounded-3xl p-4" to="/countries/zimbabwe/chapterone"
-      >PREVIOUS CHAPTER</nuxt-link
-    >
-    <img v-if="video === 3" src="~/assets/Cursor.svg" :style="{ transform: direc }" class="absolute cursor" alt="a" />
+    <img v-if="video === 3" src="~/assets/Cursor.svg" :style="{ transform: direc }" @click="goNextChapt" class="absolute cursor" alt="a" />
   </div>
 </template>
 
@@ -100,19 +97,22 @@ video {
 }
 .stepNav {
   max-height: 100px;
-  right: 7%;
+  right: 3%;
   top: 40%;
+  z-index: 3;
 }
 .cursor {
   position: absolute;
   width: 400px;
   top: 50%;
   left: 50%;
+
 }
 
 .curs {
   cursor: none;
 }
+
 
 .stepNav img {
   margin: auto;
@@ -121,12 +121,5 @@ video {
 .conte {
   height: 110vh;
   width: 100vw;
-}
-.previous {
-  position: absolute;
-  top: 15vh;
-  left: 50%;
-  transform: translate(-50%,-50%);
-
 }
 </style>
