@@ -8,7 +8,13 @@ export const mutations = {
   decrement(state){
     state.counter--
   },
-  stablish(state, chap){
-    state.counter = chap
+  one(state){
+    state.counter = 1
+  },
+  two(state){
+    state.counter = 2
+  },
+  three(state){
+    state.counter = 3
   }
 }
