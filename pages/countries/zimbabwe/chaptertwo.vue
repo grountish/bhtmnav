@@ -22,9 +22,13 @@
       </div>
     </div>
     <img :src="stepImageSource" class="stepImg" alt="st" />
-    <nuxt-link class="trasparent border-solid border-white border previous  rounded-3xl p-4" to="/countries/zimbabwe/chapterone"
-      >PREVIOUS CHAPTER</nuxt-link
-    >
+    
+      <nuxt-link
+        class="trasparent border-solid border-white text-white border previous rounded-3xl p-3 px-4 w-1/6"
+        v-if="video === 3"
+        to="/countries/zimbabwe/chapterone"
+        ><div class="flex flex-row justify-between"><img src="~/assets/arrow-left-white.svg" alt=""><h1>PREVIOUS CHAPTER</h1></div></nuxt-link
+      >
     <img v-if="video === 3" src="~/assets/Cursor.svg" :style="{ transform: direc }" class="absolute cursor" alt="a" />
   </div>
 </template>
@@ -126,7 +130,6 @@ video {
   position: absolute;
   top: 15vh;
   left: 50%;
-  transform: translate(-50%,-50%);
-
+  transform: translate(-50%, -50%);
 }
 </style>
