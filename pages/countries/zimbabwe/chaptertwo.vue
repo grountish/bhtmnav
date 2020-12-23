@@ -22,6 +22,9 @@
       </div>
     </div>
     <img :src="stepImageSource" class="stepImg" alt="st" />
+    <nuxt-link class="trasparent border-solid border-white border previous  rounded-3xl p-4" to="/countries/zimbabwe/chapterone"
+      >PREVIOUS CHAPTER</nuxt-link
+    >
     <img v-if="video === 3" src="~/assets/Cursor.svg" :style="{ transform: direc }" class="absolute cursor" alt="a" />
   </div>
 </template>
@@ -69,8 +72,8 @@ export default {
         this.video = 3
       }
     },
-    goNextChapt(){
-      console.log("object");
+    goNextChapt() {
+      console.log('object')
       this.$router.push('/countries/zimbabwe/chapterthree')
     },
     handleStep(step) {
@@ -105,13 +108,11 @@ video {
   width: 400px;
   top: 50%;
   left: 50%;
-
 }
 
 .curs {
   cursor: none;
 }
-
 
 .stepNav img {
   margin: auto;
@@ -120,5 +121,12 @@ video {
 .conte {
   height: 110vh;
   width: 100vw;
+}
+.previous {
+  position: absolute;
+  top: 15vh;
+  left: 50%;
+  transform: translate(-50%,-50%);
+
 }
 </style>
