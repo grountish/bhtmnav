@@ -3,22 +3,22 @@
     <div class="stepNav fixed flex flex-col justify-center">
       <div @click="handleStep(0)">
         <img v-if="video === 0" src="~/assets/step-nav-arrows.svg" alt="" />
-        <img v-else src="~/assets/white.svg" alt="" />
+        <img v-else src="~/assets/navigation-circle.svg" alt="" />
       </div>
       <img src="~/assets/dots.svg" alt="" />
       <div @click="handleStep(1)">
         <img v-if="video === 1" src="~/assets/step-nav-arrows.svg" alt="" />
-        <img v-else src="~/assets/white.svg" alt="" />
+        <img v-else src="~/assets/navigation-circle.svg" alt="" />
       </div>
       <img src="~/assets/dots.svg" alt="" />
       <div @click="handleStep(2)">
         <img v-if="video === 2" src="~/assets/step-nav-arrows.svg" alt="" />
-        <img v-else src="~/assets/white.svg" alt="" />
+        <img v-else src="~/assets/navigation-circle.svg" alt="" />
       </div>
       <img src="~/assets/dots.svg" alt="" />
       <div @click="handleStep(3)">
         <img v-if="video === 3" src="~/assets/step-nav-arrows.svg" alt="" />
-        <img v-else src="~/assets/white.svg" alt="" />
+        <img v-else src="~/assets/navigation-circle.svg" alt="" />
       </div>
     </div>
     <img :src="stepImageSource" class="stepImg" alt="st" />
