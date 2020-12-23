@@ -97,7 +97,7 @@ video {
 }
 .stepNav {
   max-height: 100px;
-  right: 7%;
+  right: 3%;
   top: 40%;
   z-index: 3;
 }
