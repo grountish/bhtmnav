@@ -2,7 +2,13 @@
   <nav v-if="showNav" class="">
     <ul class="flex justify-between fixed bottom-0 inset-x-0 p-6 my-2">
       <li>
-        <button v-show="this.$store.state.counter !== 1" @click="navChapter(-1)"><img src="~/assets/chapter-arrow.svg" alt="" /></button>
+        <div
+           v-show="this.$store.state.counter !== 1" @click="navChapter(-1)"  @mouseover="chapterHover" @mouseleave="chapterUnhover" 
+          class="bg-pink-100 rounded-3xl border border-solid border-red-200 flex flex-row mx-5 px-3 py-2 flex-1 cursor-pointer justify-around"
+        >
+        <button><img src="~/assets/left-arrow.svg" class="right-arrow" alt="asd" /></button>
+                  <h1 v-if="showChapNav" class="text-red-600 text-bold my-auto mx-4 text-xl">CHAPTER {{ this.$store.state.counter -1 }}</h1>
+        </div>
       </li>
       <li>
         <div
@@ -10,7 +16,7 @@
           class="bg-pink-100 rounded-3xl border border-solid border-red-200 flex flex-row mx-5 px-3 py-2 flex-1 cursor-pointer justify-around"
         >
           <h1 v-if="showChapNav" class="text-red-600 text-bold my-auto mx-4 text-xl">CHAPTER {{ this.$store.state.counter +1 }}</h1>
-          <button ><img src="~/assets/r-arrow.svg" class="right-arrow" alt="asd" /></button>
+          <button><img src="~/assets/r-arrow.svg" class="right-arrow" alt="asd" /></button>
         </div>
       </li>
     </ul>
