@@ -34,6 +34,10 @@ export default {
       e.y < 55 ? (this.showNav = true) : (this.showNav = false)
     })
     window.addEventListener('scroll', this.handleScroll)
+
+    if (window.matchMedia("(max-width: 800px)").matches) {
+      this.showNav = true
+    }
   },
   methods: {
     switchSound() {
