@@ -70,7 +70,7 @@ export default {
       }
     },
     goNextChapt(){
-      console.log("object");
+      this.$store.commit('increment')
       this.$router.push('/countries/zimbabwe/chapterone')
     },
     handleStep(step) {

@@ -1,5 +1,5 @@
 <template>
-  <div :class="[video === 3 ? 'curs' : '', 'conte']" >
+  <div :class="[video === 3 ? 'curs' : '', 'conte']">
     <div class="stepNav fixed flex flex-col justify-center">
       <div @click="handleStep(0)">
         <img v-if="video === 0" src="~/assets/step-nav-arrows.svg" alt="" />
@@ -22,7 +22,14 @@
       </div>
     </div>
     <img :src="stepImageSource" class="stepImg" alt="st" />
-    <img v-if="video === 3" src="~/assets/Cursor.svg" :style="{ transform: direc }" @click="goNextChapt" class="absolute cursor" alt="a" />
+    <img
+      v-if="video === 3"
+      src="~/assets/Cursor.svg"
+      :style="{ transform: direc }"
+      @click="goNextChapt"
+      class="absolute cursor"
+      alt="a"
+    />
   </div>
 </template>
 
@@ -69,8 +76,9 @@ export default {
         this.video = 3
       }
     },
-    goNextChapt(){
-      console.log("object");
+    goNextChapt() {
+      this.$store.commit('increment')
+
       this.$router.push('/countries/zimbabwe/chaptertwo')
     },
     handleStep(step) {
@@ -106,13 +114,11 @@ video {
   width: 400px;
   top: 50%;
   left: 50%;
-
 }
 
 .curs {
   cursor: none;
 }
-
 
 .stepNav img {
   margin: auto;

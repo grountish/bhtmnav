@@ -5,8 +5,11 @@
         <button v-show="chapter !== 1" @click="navChapter(-1)"><img src="~/assets/chapter-arrow.svg" alt="" /></button>
       </li>
       <li>
-        <div v-if="showChapNav" class="bg-pink-100 rounded-3xl border border-solid border-red-500 flex flex-row mx-5 px-6 py-2 flex-1 justify-around">
-          <h1 class="text-red-600 text-bold my-auto mx-4 text-xl">CHAPTER {{chapter}}</h1>
+        <div
+          v-if="showChapNav"
+          class="bg-pink-100 rounded-3xl border border-solid border-red-500 flex flex-row mx-5 px-6 py-2 flex-1 justify-around"
+        >
+          <h1 class="text-red-600 text-bold my-auto mx-4 text-xl">CHAPTER {{ this.$store.state.counter + 1}}</h1>
           <button v-show="chapter !== 3" @click="navChapter(+1)"><img src="~/assets/r-arrow.svg" alt="" /></button>
         </div>
       </li>
@@ -26,12 +29,13 @@ export default {
       imgSound: soundImg,
       showChapNav: false,
       chapter: 1,
+      chap: this.$store.state.counter,
     }
   },
   mounted() {
     window.addEventListener('mousemove', (e) => {
       this.$route.path.indexOf('chapter') === -1 ? (this.showChapNav = false) : (this.showChapNav = true)
-      e.y > 500 ? this.showNav = true : this.showNav = false
+      e.y > 500 ? (this.showNav = true) : (this.showNav = false)
     })
   },
   methods: {
@@ -42,20 +46,47 @@ export default {
     navChapter(sum) {
       this.chapter = this.chapter + sum
       console.log(this.chapter)
-      switch (this.chapter) {
-        case 1:
-          this.$router.push('/countries/zimbabwe/chapterone')
-          break
-        case 2:
-          this.$router.push('/countries/zimbabwe/chaptertwo')
-          break
-        case 3:
-          this.$router.push('/countries/zimbabwe/chapterthree')
-          break
-
-        default:
-          this.$router.push('/countries/zimbabwe/chapterone')
-          break
+      if(sum === +1){
+        switch (this.chapter) {
+          case 1:
+            this.$store.commit('increment')
+            this.$router.push('/countries/zimbabwe/chapterone')
+            break
+          case 2:
+            this.$store.commit('increment')
+  
+            this.$router.push('/countries/zimbabwe/chaptertwo')
+            break
+          case 3:
+            this.$store.commit('increment')
+            this.$router.push('/countries/zimbabwe/chapterthree')
+            break
+  
+          default:
+            this.$router.push('/countries/zimbabwe/chapterone')
+            break
+        }
+      }
+       if(sum === -1){
+        switch (this.chapter) {
+          case 1:
+            this.$store.commit('decrement')
+            this.$router.push('/countries/zimbabwe/chapterone')
+            break
+          case 2:
+            this.$store.commit('decrement')
+  
+            this.$router.push('/countries/zimbabwe/chapterone')
+            break
+          case 3:
+            this.$store.commit('decrement')
+            this.$router.push('/countries/zimbabwe/chaptertwo')
+            break
+  
+          default:
+            this.$router.push('/countries/zimbabwe/chapterone')
+            break
+        }
       }
     },
   },
