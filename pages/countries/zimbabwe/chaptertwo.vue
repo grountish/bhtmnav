@@ -9,7 +9,7 @@
 import a1 from '~/assets/a1.jpg'
 import a2 from '~/assets/a2.jpg'
 import a3 from '~/assets/a3.jpg'
-import a4 from '~/assets/a4.jpg'
+import a4 from '~/assets/a4-chapter-2.jpg'
 import {mixin} from '~/mixins/mixin';
 export default {
   mixins:[mixin],
