@@ -1,5 +1,6 @@
 export const state = ()=>({
-  counter : 1
+  counter : 1,
+  video:0
 })
 export const mutations = {
   increment(state){
@@ -16,5 +17,8 @@ export const mutations = {
   },
   three(state){
     state.counter = 3
+  },
+  stepNavigation(state,step){
+    state.video = step
   }
 }

@@ -1,29 +1,8 @@
 <template>
-  <div :class="[video === 3 ? 'curs' : '', 'conte']">
-    <div class="stepNav fixed flex flex-col justify-center">
-      <div @click="handleStep(0)">
-        <img v-if="video === 0" src="~/assets/step-nav-arrows.svg" alt="" />
-        <img v-else src="~/assets/navigation-circle.svg" alt="" />
-      </div>
-      <img src="~/assets/dots.svg" alt="" />
-      <div @click="handleStep(1)">
-        <img v-if="video === 1" src="~/assets/step-nav-arrows.svg" alt="" />
-        <img v-else src="~/assets/navigation-circle.svg" alt="" />
-      </div>
-      <img src="~/assets/dots.svg" alt="" />
-      <div @click="handleStep(2)">
-        <img v-if="video === 2" src="~/assets/step-nav-arrows.svg" alt="" />
-        <img v-else src="~/assets/navigation-circle.svg" alt="" />
-      </div>
-      <img src="~/assets/dots.svg" alt="" />
-      <div @click="handleStep(3)">
-        <img v-if="video === 3" src="~/assets/step-nav-arrows.svg" alt="" />
-        <img v-else src="~/assets/navigation-circle.svg" alt="" />
-      </div>
-    </div>
-    <img :src="stepImageSource" class="stepImg" alt="st" />
+  <div :class="[this.$store.state.video === 3 && overSideNav ? 'curs' : '', 'conte']">
+    <img :src="stepImg" class="stepImg" alt="st" />
     <img
-      v-if="video === 3"
+      v-if="this.$store.state.video === 3 && overSideNav"
       src="~/assets/Cursor.svg"
       :style="{ transform: direc }"
       @click="goNextChapt"
@@ -38,68 +17,37 @@ import a1 from '~/assets/a1.jpg'
 import a2 from '~/assets/a2.jpg'
 import a3 from '~/assets/a3.jpg'
 import a4 from '~/assets/a4.jpg'
-import mobilePhoto from '~/assets/mobile-photo.jpg'
-
+import { mixin } from '~/mixins/mixin'
 export default {
+  mixins: [mixin],
   data: () => ({
-    duration: '',
-    video: 0,
-    nextChapter: false,
-    showVid: true,
-    stepImageSource: a1,
-    myCursor: 'normal',
-    x: 1,
-    y: 1,
-    direc: '',
+    nextChapterRoute: 'chaptertwo',
   }),
+  computed: {
+    stepImg() {
+      switch (this.$store.state.video) {
+        case 0:
+          return a1
+          break
+        case 1:
+          return a2
+          break
+        case 2:
+          return a3
+          break
+        case 3:
+          return a4
+          break
 
-  mounted() {
-
-    if (window.matchMedia("(max-width: 800px)").matches) {
-      this.stepImageSource = mobilePhoto
-    }
-
-    window.addEventListener('scroll', this.handleScroll)
-
-    window.addEventListener('mousemove', (e) => {
-      this.x = e.x - 800
-      this.y = e.y - 400
-      this.direc = `translate(${this.x}px, ${this.y}px)`
-    })
-
-  },
-  methods: {
-    handleScroll(event) {
-      let sc = event.target.scrollingElement.scrollTop
-      if (sc < 20) {
-        this.stepImageSource = a1
-        this.video = 0
-      } else if (sc < 40 && sc > 20) {
-        this.stepImageSource = a2
-        this.video = 1
-      } else if (sc < 60 && sc > 40) {
-        this.stepImageSource = a3
-        this.video = 2
-      } else if (sc > 60) {
-        this.stepImageSource = a4
-        this.video = 3
+        default:
+          return a3
+          break
       }
-    },
-    goNextChapt() {
-      this.$store.commit('increment')
-
-      this.$router.push('/countries/zimbabwe/chaptertwo')
-    },
-    handleStep(step) {
-      let videos = [a1, a2, a3, a4]
-      this.video = step
-      this.stepImageSource = videos[step]
-      window.scrollTo(0, 0)
     },
   },
 }
 </script>
-<style scoped>
+<style >
 .skip {
   left: 50%;
   border: 1px solid black;

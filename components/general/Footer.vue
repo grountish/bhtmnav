@@ -1,5 +1,5 @@
 <template>
-  <nav v-if="showNav" class="">
+  <nav v-if="this.$store.state.video === 3" class="">
     <ul class="flex justify-between fixed bottom-0 inset-x-0 p-6 my-2">
       <li>
         <div
@@ -26,7 +26,7 @@
           <h1 v-if="showChapNav" class="text-red-600 text-bold my-auto mx-4 text-xl">
             CHAPTER {{ this.$store.state.counter + 1 }}
           </h1>
-          <button><img src="~/assets/r-arrow.svg" class="right-arrow" alt="asd" /></button>
+          <button><img src="~/assets/r-arrow.svg" class="w-2 lg:w-4" alt="asd" /></button>
         </div>
       </li>
     </ul>
