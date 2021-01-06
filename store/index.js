@@ -1,6 +1,6 @@
-export const state = ()=>({
+export const state = () =>({
   counter : 1,
-  video:0
+  video: 0
 })
 export const mutations = {
   increment(state){
