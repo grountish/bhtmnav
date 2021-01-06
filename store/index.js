@@ -20,5 +20,6 @@ export const mutations = {
   },
   stepNavigation(state,step){
     state.video = step
+    
   }
 }
