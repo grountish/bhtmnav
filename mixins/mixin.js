@@ -15,7 +15,8 @@ export const mixin = {
     x: 1,
     y: 1,
     direc: '',
-    overSideNav: true
+    overSideNav: true,
+    opacityPercent: 100
   }),
 
   mounted() {
@@ -25,7 +26,7 @@ export const mixin = {
     window.addEventListener('scroll', this.handleScroll)
     window.addEventListener('mousemove', e => {
       this.x = e.x - 850
-      this.y = e.y - 480
+      this.y = e.y + 400
       this.direc = `translate(${this.x}px, ${this.y}px)`
       e.x > window.innerWidth - window.innerWidth / 15 ? (this.overSideNav = false) : (this.overSideNav = true)
     })
@@ -33,14 +34,17 @@ export const mixin = {
   methods: {
     handleScroll(event) {
       let sc = event.target.scrollingElement.scrollTop
-      if (sc < 20) {
-          this.$store.commit('stepNavigation', 0)
-      } else if (sc < 40 && sc > 20) {
-          this.$store.commit('stepNavigation', 1)
-      } else if (sc < 60 && sc > 40) {
-          this.$store.commit('stepNavigation', 2)
-      } else if (sc > 60) {
-          this.$store.commit('stepNavigation', 3)
+      let scrollSensitivity = 250
+      let opacityPercent = (sc % scrollSensitivity) 
+      this.opacityPercent = `${opacityPercent}%`
+      if (sc < scrollSensitivity) {
+        this.$store.commit('stepNavigation', 0)
+      } else if (sc < scrollSensitivity * 2 && sc > scrollSensitivity) {
+        this.$store.commit('stepNavigation', 1)
+      } else if (sc < scrollSensitivity * 3 && sc > scrollSensitivity * 2) {
+        this.$store.commit('stepNavigation', 2)
+      } else if (sc > scrollSensitivity * 3) {
+        this.$store.commit('stepNavigation', 3)
       }
     },
     goNextChapt() {
@@ -48,7 +52,6 @@ export const mixin = {
       this.$router.push(`/countries/zimbabwe/${this.nextChapterRoute}`)
     },
     handleStep(step) {
-    //   this.$store.commit('stepNavigation', step)
       let videos = [a1, a2, a3, a4]
       this.video = step
       this.stepImageSource = videos[step]

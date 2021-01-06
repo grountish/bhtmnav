@@ -1,10 +1,10 @@
 <template>
   <div :class="[this.$store.state.video === 3 && overSideNav ? 'curs' : '', 'conte']">
-    <img :src="stepImg" class="stepImg" alt="st" />
+    <img :src="stepImg" class="stepImg fixed inset-0" alt="st" :style="{opacity: opacityPercent }" />
     <img
       v-if="this.$store.state.video === 3 && overSideNav"
       src="~/assets/Cursor.svg"
-      :style="{ transform: direc }"
+      :style="{ transform: direc}"
       @click="goNextChapt"
       class="absolute cursor"
       alt="a"
@@ -64,7 +64,7 @@ video {
   max-height: 100px;
   right: 3%;
   top: 40%;
-  z-index: 3;
+  
 }
 .cursor {
   position: absolute;
@@ -82,7 +82,10 @@ video {
 }
 
 .conte {
-  height: 110vh;
+  height: 240vh;
   width: 100vw;
+}
+.stepImg{
+  z-index: -10 !important;
 }
 </style>

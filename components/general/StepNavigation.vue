@@ -1,5 +1,5 @@
 <template>
-  <div class="stepNav fixed flex flex-col justify-center">
+  <div class="stepNav fixed flex flex-col justify-center z-10">
     <div @click="navigateToStep(0)" >
       <img v-if="this.$store.state.video === 0" class="lg:w-12" src="~/assets/step-nav-arrows.svg" alt="" />
       <img v-else src="~/assets/navigation-circle.svg"  alt="" />
@@ -38,7 +38,7 @@ export default {
   max-height: 100px;
   right: 3%;
   top: 40%;
-  z-index: 3;
+ 
 }
 .stepNav img {
   margin: auto;

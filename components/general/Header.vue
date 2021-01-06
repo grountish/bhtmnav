@@ -1,8 +1,8 @@
 <template>
-  <nav v-if="showNav" class="">
+  <nav v-if="showNav">
     <ul class="flex fixed top-0 inset-x-0 p-6">
       <li class="flex-1 mr-2">
-        <nuxt-link class="" to="/"><img :src="logoNav" alt="" /></nuxt-link>
+        <nuxt-link class="" to="/"><img :src="logoNavComputed" alt="" /></nuxt-link>
       </li>
       <li class="flex-1 ml-auto">
         <img :src="imgSound" class="sound ml-auto" alt="" @click="switchSound" />
@@ -33,8 +33,6 @@ export default {
       this.$route.path.indexOf('chapter') === -1 ? (this.showChapNav = false) : (this.showChapNav = true)
       e.y < 55 ? (this.showNav = true) : (this.showNav = false)
     })
-    window.addEventListener('scroll', this.handleScroll)
-
     if (window.matchMedia("(max-width: 800px)").matches) {
       this.showNav = true
     }
@@ -43,23 +41,23 @@ export default {
     switchSound() {
       this.sound = !this.sound
       this.sound ? (this.imgSound = soundImg) : (this.imgSound = noSound)
-    },
-    handleScroll(event) {
-      let sc = event.target.scrollingElement.scrollTop
-
-      if (sc > 60) {
-        this.logoNav = whiteNav
-      } else {
-        this.logoNav = blackNav
-      }
-    },
+    }
   },
+  computed:{
+      logoNavComputed(){
+       if (this.$store.state.video === 3){
+         return whiteNav 
+       } else{
+         return blackNav
+       }
+      }
+  }
 }
 </script>
 
 <style scoped>
 nav {
-  z-index: 3;
+  z-index: 2;
 }
 .sound {
   max-width: 18px;

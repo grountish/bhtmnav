@@ -1,9 +1,9 @@
 <template>
   <div class="container">
-    <Header />
-    <StepNavigation />
     <nuxt />
     <Footer />
+    <Header />
+    <StepNavigation />
   </div>
 </template>
 
