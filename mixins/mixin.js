@@ -34,8 +34,8 @@ export const mixin = {
   methods: {
     handleScroll(event) {
       let sc = event.target.scrollingElement.scrollTop
-      let scrollSensitivity = 250
-      let opacityPercent = (sc % scrollSensitivity) 
+      let scrollSensitivity = 251
+      let opacityPercent =250 - (sc % scrollSensitivity) 
       this.opacityPercent = `${opacityPercent}%`
       if (sc < scrollSensitivity) {
         this.$store.commit('stepNavigation', 0)
@@ -55,7 +55,7 @@ export const mixin = {
       let videos = [a1, a2, a3, a4]
       this.video = step
       this.stepImageSource = videos[step]
-      window.scrollTo(0, 0)
+    //   window.scrollTo(0, 0)
     }
   }
 }

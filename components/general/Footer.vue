@@ -15,7 +15,7 @@
           </h1>
         </div>
       </li>
-      <li>
+      <!-- <li>
         <div
           v-show="this.$store.state.counter !== 3"
           @click="navChapter(+1)"
@@ -28,7 +28,7 @@
           </h1>
           <button><img src="~/assets/r-arrow.svg" class="w-2 lg:w-4" alt="asd" /></button>
         </div>
-      </li>
+      </li> -->
     </ul>
   </nav>
 </template>
